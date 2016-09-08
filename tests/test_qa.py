@@ -1,30 +1,22 @@
 #-*- coding: utf-8 -*-
-import unittest
-
 
 import pytest
-
 from application import Application
-
-def is_alert_present(wd):
-    try:
-        wd.switch_to_alert().text
-        return True
-    except:
-        return False
+import socket
 
 
-@pytest.fixture()
-def app(request):
-    fixture = Application()
-    request.addfinalizer(fixture.destroy())
-    return fixture
+s = socket.socket()
+s.connect(("irr.ru", 80))
+
+@pytest.fixture(scope="module")
+def app():
+
+    return Application()
 
 
-
-def test_search_in_python_org(self):
+def test_search_in_python_org(app):
     app.open_home_page()
-    app.login( login_name="akordyukova@pronto.ru", password="111111")
+    app.login("akordyukova@pronto.ru", "111111")
 
 
 
