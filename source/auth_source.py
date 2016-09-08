@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*-
 
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
@@ -22,3 +23,10 @@ class Authorization:
     def enter_authorization(self):
         wd = self.app.wd
         wd.find_element_by_class_name("js-authorizationButton").click()
+
+    def logout(self):
+        wd = self.app.wd
+        wd.find_element_by_class_name("js-authBlockMenuButton").click()
+        WebDriverWait(self.app.wd, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "js-authBlockDropDown")))
+        wd.find_element_by_link_text("Выход").click()
+        WebDriverWait(self.app.wd, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "js-authorizationButton")))

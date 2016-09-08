@@ -16,6 +16,20 @@ class Application:
         wd = self.wd
         wd.get("http://irr.ru")
 
+    def logo_click(self):
+        wd = self.wd
+        if wd.find_element_by_class_name("header__item").is_displayed():
+            wd.find_element_by_class_name("header__item").click()
+        # else:
+        # if wd.driver.find_element_by_xpath(u"//img[@alt='Из руки в руки']").is_displayed():
+        #     wd.driver.find_element_by_xpath(u"//img[@alt='Из руки в руки']").click()
+
+        WebDriverWait(self.wd, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "header__inputHolder")))
+        assert self.wd.current_url == "http://irr.ru/"
+
+
+
+
     def destroy(self):
         self.wd.quit()
 
