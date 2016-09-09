@@ -18,7 +18,7 @@ class Authorization:
         wd.find_element_by_name("password").send_keys(password)
         wd.find_element_by_class_name("js-authFormLogin").submit()
         WebDriverWait(self.app.wd, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "user-account")))
-        assert "http://irr.ru/account/items" == self.app.wd.current_url
+        assert "http://irr.ru.stage/account/items" == self.app.wd.current_url
 
     def enter_authorization(self):
         wd = self.app.wd

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<environments>
+    <environment id="local">
+        <parameter>
+            <name>host</name>
+            <value>LocalURL</value>
+        </parameter>
+    </environment>
+    <environment id="stage">
+        <parameter>
+            <name>host</name>
+            <value>http://irr.ru.stage</value>
+        </parameter>
+    </environment>
+    <environment id="production">
+        <parameter>
+            <name>host</name>
+            <value>http://irr.ru</value>
+        </parameter>
+    </environment>
+</environments>
