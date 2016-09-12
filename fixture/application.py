@@ -7,12 +7,14 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.webdriver import WebDriver
 from source.auth_source import Authorization
 
+
 class Application:
 
     def __init__(self):
         self.wd = WebDriver()
         self.wd.implicitly_wait(60)
         self.authorization = Authorization(self)
+
 
     def open_home_page(self):
         wd = self.wd
@@ -28,6 +30,10 @@ class Application:
 
         WebDriverWait(self.wd, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "header__inputHolder")))
         assert self.wd.current_url == "http://irr.ru.stage/"
+
+    def enter_authorization(self):
+        wd = self.wd
+        wd.find_element_by_class_name("js-authorizationButton").click()
 
     def destroy(self):
         self.wd.quit()

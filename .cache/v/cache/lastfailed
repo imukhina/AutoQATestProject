@@ -1,1 +1,4 @@
-{}
+{
+  "tests/test_qa.py::test_search_in_python_org": true,
+  "tests/test_qa.py::test_simple_registration": true
+}
